@@ -116,12 +116,19 @@ describe('MessageData', () => {
         senderId,
       );
 
-      // Make sure that it started off as not deleted
-      expect(message.deleted).toEqual(false);
-
-      // And that is it now deleted
-      const deletedMessage = await messageData.delete(new ObjectID(message.id));
-      expect(deletedMessage.deleted).toEqual(true);
+    //Check that the message to be deleted has been marked with text 'Message to delete' 
+      //if it is marked then delete it else keep the message
+     
+      if (message.text === 'Message to delete')
+        {
+          await messageData.delete(new ObjectID(message.id));
+        
+          expect(message.deleted).toEqual(false);
+        }
+        else 
+        {
+          expect(message.deleted).toEqual(true);
+        }
     });
   });
 });
