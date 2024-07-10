@@ -117,8 +117,7 @@ describe('MessageData', () => {
       );
 
     //Check that the message to be deleted has been marked with text 'Message to delete' 
-      //if it is marked then delete it else keep the message
-     
+      //if it is marked then delete it else dont delete the message.
       if (message.text === 'Message to delete')
         {
           await messageData.delete(new ObjectID(message.id));
