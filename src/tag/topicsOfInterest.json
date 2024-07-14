@@ -1,0 +1,26 @@
+{
+    "Film & Cinema" :[
+        {
+            "category" : "Film & Cinema",
+            "keyword": ["avatar","film","spiderman","cinema","avengers","end game","harry","potter","action","adventure","romance","story","year","rating","movie"]
+        }
+    ],
+    "Sport" :[
+        {
+            "category" : "Sport",
+            "keyword": ["ball", "match", "game", "team", "goal" , "player"]
+        },
+        {
+            "category" : "Sport",
+            "keyword": ["ball", "hoop", "score", "player", "match"]
+        },
+        {
+            "category" : "Sport",
+            "keyword": ["swimmer", "competition", "backstroke", "freestyle"]
+        },
+        {
+            "category" : "Sport",
+            "keyword": ["bat", "ball", "match", "score", "competition"]
+        }
+    ]
+    }

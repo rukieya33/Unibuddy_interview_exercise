@@ -115,6 +115,9 @@ export class MessageLogic implements IMessageLogic {
       this.conversationData.getConversation(conversationId),
     ]);
 
+  
+   
+   
     // Mark this message as the last message in the conversation
     await this.conversationData.updateConversationWithLastMessage(
       conversationId,
@@ -146,13 +149,16 @@ export class MessageLogic implements IMessageLogic {
       resolved: message.resolved,
       isSenderBlocked: false,
     });
+    
+
 
     this.conversationChannel.send(sendMessageEvent, conversationId);
     sender.accountRole = accountRole;
 
     return message;
   }
-
+  
+ 
   private async mapRichContent(
     messageDto: MessageDto,
     message: ChatMessageModel,
@@ -698,3 +704,4 @@ export class MessageLogic implements IMessageLogic {
     return pollOption;
   }
 }
+

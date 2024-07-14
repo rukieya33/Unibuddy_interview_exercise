@@ -1,3 +1,4 @@
+
 import {
   Resolver,
   Mutation,
@@ -35,10 +36,12 @@ import {
 import { SafeguardingService } from '../safeguarding/safeguarding.service';
 import { ChatMessageDataLoader } from './message.dataloader';
 
+
 type ChatMessageReference = { __typename: string; id: ObjectId };
 
 @Resolver(() => ChatMessage)
 export class MessageResolver {
+  static sendConversationMessage: any;
   constructor(
     private messageLogic: MessageLogic,
     private safeguardingService: SafeguardingService,
@@ -59,9 +62,12 @@ export class MessageResolver {
     @Args('messageDto') messageDto: MessageDto,
     @AuthenticatedUser() authenticatedUser: IAuthenticatedUser,
   ): Promise<ChatMessage> {
-    return await this.messageLogic.create(messageDto, authenticatedUser);
+   const message = await this.messageLogic.create(messageDto, authenticatedUser);
+
+  return message
   }
 
+   
   @Query(() => [ChatMessage], {
     deprecationReason:
       'This query has now been deprecated, please use getChatConversationMessages',

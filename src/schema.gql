@@ -23,12 +23,6 @@ enum ContextType {
   isNewsFeedConversation
 }
 
-type Reaction {
-  reaction: String!
-  reactionUnicode: String!
-  userIds: [String!]!
-}
-
 type ChatConversation {
   id: ID!
   unreadMessageCount: Int
@@ -39,6 +33,12 @@ type ChatConversation {
 
 type UserField {
   id: String
+}
+
+type Reaction {
+  reaction: String!
+  reactionUnicode: String!
+  userIds: [String!]!
 }
 
 type ReplyMessage {

@@ -3,6 +3,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ObjectID } from 'mongodb';
 import { AttachmentType, GifType } from './message.dto';
 import { Field, ObjectType } from '@nestjs/graphql';
+import { Tag } from '../../conversation/models/CreateChatConversation.dto';
 
 @Schema()
 export class ReplyMessage {
@@ -118,10 +119,13 @@ export class Reaction {
 @Schema()
 export class ChatMessageModel {
   id: ObjectID;
-
+  
   @Prop()
   text: string;
 
+  @Prop()
+  tags: Tag[];
+  
   @Prop({ required: true, type: () => Date })
   created: Date;
 

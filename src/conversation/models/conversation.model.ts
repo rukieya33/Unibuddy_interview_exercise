@@ -1,4 +1,4 @@
-import { Tag } from './CreateChatConversation.dto';
+import { Tag, TagType } from './CreateChatConversation.dto';
 import { ObjectID } from 'mongodb';
 import { Document } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
@@ -12,8 +12,9 @@ export class ChatConversationModel {
    * No props here it's added to all documents but we need this
    * to be able to match the return type
    */
+  
   id: string;
-
+  
   @Prop({
     required: true,
     // Getter and setter to work around https://jira.mongodb.org/browse/NODE-1645, without resorting to unsafe { checkKeys: false}
@@ -49,7 +50,12 @@ export class ChatConversationModel {
     required: false,
     default: [],
   })
-  tags?: Tag[];
+
+  tags:Tag[] = [];
+  messageTag: any;
+
+
+
 }
 
 export type ChatConversationDocument = ChatConversationModel & Document;
@@ -65,7 +71,7 @@ export function chatConversationToObject(
     virtuals: true,
     versionKey: false,
   });
-  return parsed;
+  return parsed
 }
 
 export const ChatConversationSchema = SchemaFactory.createForClass(

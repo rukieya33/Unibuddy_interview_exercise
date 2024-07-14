@@ -6,7 +6,7 @@ import { ObjectID } from 'mongodb';
 import { IAuthenticatedUser } from '../authentication/jwt.strategy';
 import { PermissionsService } from '../permissions/permissions.service';
 import { Action } from '../permissions/models/permissions.model';
-
+import {Tag} from './models/CreateChatConversation.dto';
 import { Permission } from './models/Permission.dto';
 import {
   Context,
@@ -21,7 +21,6 @@ import { LastReadInput } from './models/LastReadInput.dto';
 import { ConversationData } from './conversation.data';
 import {
   CreateChatConversationDto,
-  Tag,
 } from './models/CreateChatConversation.dto';
 import { AddMemberDTO } from './models/AddMember.dto';
 import { pinMessageDTO, unpinMessageDTO } from './models/pinnedMessages.dto';
@@ -42,6 +41,8 @@ import {
   MessageGroupedByConversationOutput,
   MessagesFilterInput,
 } from './models/messagesFilterInput';
+import { Tags } from 'babylonjs';
+
 
 export interface IConversationLogic {
   getConversation(

@@ -1,3 +1,4 @@
+
 import {
   Delete,
   Param,
@@ -35,6 +36,7 @@ import {
 import { isDateDifferenceWithin7Days } from '../message/utils/message.helper';
 import { Response } from 'express';
 
+
 @Controller('conversation')
 export class ConversationController {
   constructor(
@@ -44,14 +46,22 @@ export class ConversationController {
   ) {}
 
   @Post()
+  @ApiResponse({
+    status: 401,
+    description: 'Unauthorised',
+  })
+  @ApiResponse({
+    status: 201,
+    description: 'Item created successfully',
+    type:CreateChatConversationDto
+  })
   @ApiSecurity('X-API-KEY')
-  @UseGuards(XApiKeyGuard)
   async create(
     @Body() createChatConversationDto: CreateChatConversationDto,
   ): Promise<ChatConversation> {
     return this.conversationLogic.create(createChatConversationDto);
   }
-
+  
   @Post('direct')
   @ApiSecurity('X-API-KEY')
   @UseGuards(XApiKeyGuard)
@@ -68,13 +78,22 @@ export class ConversationController {
   update(
     @Param('conversationId') conversationId: string,
     @Body() createChatConversationDto: CreateChatConversationDto,
-  ) {
-    throw new Error('Endpoint not implemented');
+  ){
+    
   }
 
   @Put(':conversationId/tags')
   @ApiSecurity('X-API-KEY')
-  @UseGuards(XApiKeyGuard)
+
+  @ApiResponse({
+    status: 401,
+    description: 'Unauthorised',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Item updated successfully',
+    type:ChatConversation
+  })
   @ApiBody({ type: [Tag] })
   async updateTags(
     @Param('conversationId') conversationId: string,

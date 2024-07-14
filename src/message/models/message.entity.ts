@@ -4,6 +4,7 @@ import { UserField, MessageSender } from '../../user/models/user.model';
 import { ChatConversation } from '../../conversation/models/ChatConversation.entity';
 import { AttachmentType, GifType } from './message.dto';
 import { Reaction } from './message.model';
+import { Tag } from '../../conversation/models/CreateChatConversation.dto';
 
 class ReplyMessageSocket {
   text?: string;

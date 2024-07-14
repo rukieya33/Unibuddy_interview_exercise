@@ -29,6 +29,8 @@ import { UnreadCountInput, UnreadCountOutput } from './models/unreadCount.dto';
 import { LastMessageInput, LastMessageOutput } from './models/lastMessage.dto';
 import { MessageData } from '../message/message.data';
 import { ChatMessage } from '../message/models/message.entity';
+import { generateListOfTags } from '../tag/tag';
+import { string } from 'joi';
 
 export interface IConversationData {
   addMember(
@@ -169,7 +171,7 @@ export class ConversationData implements IConversationData {
     chatConversation.context = data.context;
     chatConversation.product = data.product;
     chatConversation.permissions = data.permissions ?? [];
-    chatConversation.tags = data.tags;
+    chatConversation.tags = data.tags
     if (data.memberIds) {
       chatConversation.memberIds = data.memberIds;
     }

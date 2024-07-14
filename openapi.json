@@ -176,14 +176,17 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "",
+                        "description": "Item created successfully",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ChatConversation"
+                                    "$ref": "#/components/schemas/CreateChatConversationDto"
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorised"
                     }
                 },
                 "security": [
@@ -289,7 +292,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "Item updated successfully",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -297,6 +300,9 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorised"
                     }
                 },
                 "security": [
@@ -708,10 +714,7 @@
                         "type": "string"
                     },
                     "type": {
-                        "type": "string",
-                        "enum": [
-                            "subTopic"
-                        ]
+                        "type": "string"
                     }
                 },
                 "required": [
@@ -743,6 +746,7 @@
                         }
                     },
                     "tags": {
+                        "default": [],
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/Tag"
@@ -764,6 +768,32 @@
                 "required": [
                     "product",
                     "context"
+                ]
+            },
+            "DirectChatConversationDto": {
+                "type": "object",
+                "properties": {
+                    "product": {
+                        "type": "string"
+                    },
+                    "context": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Context"
+                        }
+                    },
+                    "userToConverseWith": {
+                        "type": "string"
+                    },
+                    "currentUserId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "product",
+                    "context",
+                    "userToConverseWith",
+                    "currentUserId"
                 ]
             },
             "ObjectID": {
@@ -1007,32 +1037,6 @@
                 },
                 "required": [
                     "id"
-                ]
-            },
-            "DirectChatConversationDto": {
-                "type": "object",
-                "properties": {
-                    "product": {
-                        "type": "string"
-                    },
-                    "context": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Context"
-                        }
-                    },
-                    "userToConverseWith": {
-                        "type": "string"
-                    },
-                    "currentUserId": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "product",
-                    "context",
-                    "userToConverseWith",
-                    "currentUserId"
                 ]
             },
             "AddMemberDTO": {
