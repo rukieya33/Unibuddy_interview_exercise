@@ -1,3 +1,7 @@
+# NOTE PLEASE:
+- I Have completed all three exercises for some strange reason github did not commit the part 3 stretch exercise with a new commit message so that is why part 3 commit messages has the part 2 commit message.
+
+
 # Unibuddy Engineering Exercise
 
 This exercise is based on the deployed Unibuddy Chat service. The chat service is a core component in our product suite. 
